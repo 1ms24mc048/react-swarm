@@ -29,22 +29,13 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhubID') {
-                        dockerImage.push("${BUILD_NUMBER}")
-                        dockerImage.push("latest")
+                        dockerImage.push()
                     }
                 }
             }
         }
 
-        stage('Deploy to Docker Swarm') {
-            steps {
-                sh '''
-                docker stack deploy \
-                -c docker-compose.yml \
-                react-stack
-                '''
-            }
-        }
+        
     }
 
     post {

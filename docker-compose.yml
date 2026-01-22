@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  react-app:
+    image: 1ms24mc048/react-swarm:latest
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+      update_config:
+        parallelism: 1
+        delay: 10s
+      placement:
+        constraints:
+          - node.role == worker

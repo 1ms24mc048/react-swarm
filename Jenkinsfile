@@ -12,7 +12,8 @@ pipeline {
             steps {
                 git(
                     url: 'https://github.com/1ms24mc048/react-swarm',
-                    branch: 'main'
+                    branch: 'main',
+                    credentialsId : 'dockerhubID'
                 )
             }
         }
